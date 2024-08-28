@@ -2,10 +2,41 @@ import React, { useState } from 'react'
 import './App.css'
 
 const App = () => {
-  const [input, setInput] =useState('0');
+  const [input, setInput] =useState('');
+
+  const calculateResult = (input) =>{
+    let result;
+    try{
+      const operators = ['+','-','*','/','%'];
+      let operator = null;
+
+      for(let i=0; i<input.length;i++){
+      if(operators.includes(input[i])){
+        operator = input[i];
+        break;
+      }
+    }
+    const [operand1, operand2] = input.split (operator).map(parseFloat);
+    let result
+  }
+    catch(error){
+    
+    }
+  }
   const handleButtonClick = (value)=>{
     if(value === 'C'){
       setInput ('');
+    } else if(value === '<'){
+      setInput(input.slice(0,-1));
+    } else if(value === '='){
+      calculateResult(input);
+      // try{
+      //   setInput(eval(input).toString())
+      // } catch(error){
+      //   setInput('Error')
+      // }
+    } else{
+      setInput((preValue) => preValue + value)
     }
   }
   return (
